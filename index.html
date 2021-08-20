@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="NeuralRecon reconstructs 3D scene geometry from a monocular video with known camera poses in real-time. Accepted in CVPR 2021 as oral."/>
-    <title>NeuralRecon: Real-Time Coherent 3D Reconstruction from Monocular Video</title>
+    <meta name="description" content="Mobile3DScanner: An Online 3D Scanner for High-quality Object Reconstruction with a Mobile Device. Published in the Special Issue of TVCG for ISMAR 2021."/>
+    <title>Mobile3DScanner: An Online 3D Scanner for High-quality Object Reconstruction with a Mobile Device</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
@@ -24,18 +24,19 @@
       <div class="container">
         <div class="row">
           <div class="col">
-            <h2 style="font-size:30px;">NeuralRecon: Real-Time Coherent 3D Reconstruction from Monocular Video</h2>
-            <h4 style="color:#6e6e6e;"> CVPR 2021</h4>
-            <h5 style="color:#6e6e6e;"> (Oral Presentation and Best Paper Candidate)</h5>
+            <h2 style="font-size:30px;">Mobile3DScanner: An Online 3D Scanner for High-quality Object Reconstruction with a Mobile Device</h2>
+            <h4 style="color:#6e6e6e;"> Special Issue of TVCG for ISMAR 2021</h4>
             <hr>
-            <h6> <a href="https://jiamingsun.ml/" target="_blank">Jiaming Sun</a><sup>1,2*</sup>, 
-                 <a href="https://ymingxie.github.io/" target="_blank">Yiming Xie</a><sup>1*</sup>, 
-                 <!-- <a href="https://ymingxie.github.io/" target="_blank">Yiming Xie</a><sup>1,2*</sup>,  -->
-                <a href="https://github.com/f-sky" target="_blank">Linghao Chen</a><sup>1</sup>,
-                <a href="http://xzhou.me" target="_blank">Xiaowei Zhou</a><sup>1</sup>,
-                <a href="http://www.cad.zju.edu.cn/bao/" target="_blank">Hujun Bao</a><sup>1</sup></h6>
-            <p> <sup>1</sup>State Key Lab of CAD & CG, Zhejiang University &nbsp;&nbsp; 
-                <sup>2</sup>SenseTime Research
+            <h6> <a target="_blank">Xiaojun Xiang</a><sup>1*</sup>, 
+                 <a target="_blank">Hanqing Jiang</a><sup>1*</sup>, 
+                <a href="http://www.cad.zju.edu.cn/home/gfzhang/" target="_blank">Guofeng Zhang</a><sup>2*</sup>,
+                <a target="_blank">Yihao Yu</a><sup>1</sup>,
+                <a target="_blank">Chenchen Li</a><sup>1</sup>,
+                <a target="_blank">Xingbin Yang</a><sup>1</sup>,
+                <a target="_blank">Danpeng Chen</a><sup>1</sup>,
+                <a href="http://www.cad.zju.edu.cn/bao/" target="_blank">Hujun Bao</a><sup>2</sup></h6>
+            <p> <sup>1</sup>SenseTime Research&nbsp;&nbsp; 
+                <sup>2</sup>State Key Lab of CAD & CG, Zhejiang University
                 <br>
                 <sup>*</sup> denotes equal contribution
             </p>
@@ -47,15 +48,6 @@
               <div class="column">
                   <p class="mb-5"><a class="btn btn-large btn-light" href="https://arxiv.org/pdf/2104.00681.pdf" role="button"  target="_blank">
                     <i class="fa fa-file"></i> Paper</a> </p>
-              </div>
-              <div class="column">
-                  <p class="mb-5"><a class="btn btn-large btn-light" id="code_soon" href="https://github.com/zju3dv/NeuralRecon" role="button" 
-                    target="_blank" disabled=1>
-                <i class="fa fa-github-alt"></i> Code </a> </p>
-              </div>
-              <div class="column">
-                  <p class="mb-5"><a class="btn btn-large btn-light" href="files/NeuralRecon-suppmat.pdf" role="button"  target="_blank">
-                    <i class="fa fa-file"></i> Supplementary</a> </p>
               </div>
             </div>
             
@@ -72,25 +64,43 @@
         <div class="col-12 text-center">
           <h3>Abstract</h3>
             <hr style="margin-top:0px">
-            <h6 style="color:#8899a5"> NeuralRecon reconstructs 3D scene geometry from a monocular video with known camera poses in <b style="color:#e94a00">real-time</b>🔥.</h6>
-<!--             <video poster="images/header-vid-poster.png" width="70%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="" id="header_vid"> -->
-            <video width="70%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="" id="header_vid">
-                  <source src="videos/web-scene2.m4v" type="video/mp4">
-            </video>
-            <div><b style="color:#fd5638; font-size:large" id="demo-warning"></b>
+            <h6 style="color:#8899a5"> Mobile3DScanner is capable of scanning a large immovable object such as a “Lion” statue on iPad Pro 2020.</h6>
+            <img class="img-fluid" src="images/teaser.png" alt="Mobile3DScanner Teaser" width="93%">
             <br>
-            </div>
-              <!-- <br><br> -->
-          <p class="text-justify">
-            We present a novel framework named NeuralRecon for real-time 3D scene reconstruction from a monocular video. Unlike previous methods that estimate single-view depth maps separately on each key-frame and fuse them later, we propose to directly reconstruct local surfaces represented as sparse TSDF volumes for each video fragment sequentially by a neural network. A learning-based TSDF fusion module based on gated recurrent units is used to guide the network to fuse features from previous fragments. This design allows the network to capture local smoothness prior and global shape prior of 3D surfaces when sequentially reconstructing the surfaces, resulting in accurate, coherent, and real-time surface reconstruction. The experiments on ScanNet and 7-Scenes datasets show that our system outperforms state-of-the-art methods in terms of both accuracy and speed. To the best of our knowledge, this is the first learning-based system that is able to reconstruct dense coherent 3D geometry in real-time. 
-          </p>
+            <hr style="margin-top:0px">
+            <p class="text-justify">
+              We present a novel online 3D scanning system for high-quality object reconstruction with a mobile device, called Mobile3DScanner. Using a mobile device equipped with an embedded RGBD camera, our system provides online 3D object reconstruction capability for users to acquire high-quality textured 3D object models. Starting with a simlutaneous pose tracking and TSDF fusion module, our system allows users to scan an object with a mobile device to get a 3D model for real-time preview. After the real-time scanning process is completed, the scanned 3D model is globally optimized and mapped with multi-view textures as an efficient post- process to get the final textured 3D model on the mobile device. Unlike most existing state-of-the-art systems which can only scan homeware objects such as toys with small dimensions due to the limited computation and memory resources of mobile platforms, our system can reconstruct objects with large dimensions such as statues. We propose a novel visual-inertial ICP approach to achieve real-time accurate 6DoF pose tracking of each incoming frame on the front end, while maintaining a keyframe pool on the back end where the keyframe poses are optimized by local BA. Simultaneously, the keyframe depth maps are fused by the optimized poses to a TSDF model in real-time. Especially, we propose a novel adaptive voxel resizing strategy to solve the out-of-memory problem of large dimension TSDF fusion on mobile platforms. In the post-process, the keyframe poses are globally optimized and the keyframe depth maps are optimized and fused to obtain a final object model with more accurate geometry. The experiments with quantitative and qualitative evaluation demonstrate the effectiveness of the proposed 3D scanning system based on a mobile device, which can successfully achieve online high-quality 3D reconstruction of natural objects with larger dimensions for efficient AR content creation.
+            </p>
         </div>
       </div>
     </div>
   </section>
   <br>
 
-  <!-- reconstruction showcase -->
+  <!-- Real-time scanning -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col text-center">
+            <h3>Real-time Scanning</h3>
+            <hr style="margin-top:0px">
+            <video width="100%" playsinline="" controls autoplay loop="loop" preload="" muted="">
+                <source src="videos/sup-1.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="col text-center">
+            <h3>More Results</h3>
+            <hr style="margin-top:0px">
+            <video width="100%" playsinline="" controls autoplay loop="loop" preload="" muted="">
+                <source src="videos/sup-2.mp4" type="video/mp4">
+            </video>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+
+  <!-- showcase -->
   <section>
     <div class="container">
       <div class="row">
@@ -98,145 +108,41 @@
             <h3>Reconstruction showcase</h3>
             <hr style="margin-top:0px">
             <div class="embed-responsive embed-responsive-16by9">
-
-                <iframe style="clip-path: inset(1px 1px)" width="100%" height="100%" src="https://sketchfab.com/playlists/embed?autostart=1&autospin=0.25&amp;collection=bd885db8684e4876976bd6616eda7ade" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-            </div>
+              <iframe width="640" height="480" src="https://sketchfab.com/playlists/embed?collection=b8cdbcb052f349a9bc6fc2a68e4f2001&autostart=1"
+              frameborder="0" allow="autoplay; fullscreen; vr" allowvr=""
+              allowfullscreen="" mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>            
+          </div>
             <br>
-            <p> Zoom in by scrolling. You can toggle the “Single Sided” option in Model Inspector (pressing I key) to enable back-face culling (see through walls). Select “Matcap” to inspect the geometry without textures.</p>
         </div>
       </div>
     </div>
   </section>
   <br>
 
-
-  <!-- real-time incremental reconstruction -->
+  <!-- system overview -->
   <section>
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">
-            <h3>Real-time incremental reconstruction</h3>
+            <h3>System Overview</h3>
+            <hr style="margin-top:0px">
+
+            <img class="img-fluid" src="images/system_overview.png" alt="Mobile3DScanner System Overview" width="80%">
             <p class="text-justify"> 
-              Data is captured around the working area with an iPhone, and the camera poses are obtained from <a href="https://developer.apple.com/documentation/arkit">ARKit</a>.
-              The model used here is only trained on ScanNet, which indicates that NeuralRecon generalizes well to new domains.
-              The gradual refinement on the reconstruction quality over time (through GRU-Fusion) can also be observed.
-            </p>
-            <hr style="margin-top:0px">
-            <video width="100%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
-                <source src="videos/web-scene1.m4v" type="video/mp4">
-            </video>
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe style="clip-path: inset(1px 1px)" width="100%" height="100%" src="https://sketchfab.com/playlists/embed?autostart=1&autospin=0.25&amp;collection=3d55b6141e18492790509fc93fa453c9" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-            </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <br>
-
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col text-center">
-            <h3>AR demo 1</h3>
-            <hr style="margin-top:0px">
-            <video width="100%" playsinline="" controls autoplay loop="loop" preload="" muted="">
-                <source src="videos/ar-1.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="col text-center">
-            <h3>AR demo 2</h3>
-            <hr style="margin-top:0px">
-            <video width="100%" playsinline="" controls autoplay loop="loop" preload="" muted="">
-                <source src="videos/ar-2.mp4" type="video/mp4">
-            </video>
-        </div>
-      </div>
-    </div>
-  </section>
-  <br>
-
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center">
-            <h3>Generalization to the outdoor scene</h3>
-            <p class="text-justify"> 
-              The pretrained model of NeuralRecon can generalize reasonably well to outdoor scenes, which are completely out of the domain of the training dataset ScanNet.
-            </p>
-            <hr style="margin-top:0px">
-            <video width="100%" playsinline="" controls preload="" muted="">
-                <source src="videos/outdoor-midres-8.mp4" type="video/mp4">
-            </video>
-        </div>
-      </div>
-    </div>
-  </section>
-  <br>
-
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center">
-            <h3>Handling scenes with extremely low texture</h3>
-            <p class="text-justify"> 
-              NeuralRecon can handle homogeneous textures (e.g. white walls and tables), thanks to the learned surface priors.
-            </p>
-            <hr style="margin-top:0px">
-            <video width="100%" playsinline="" controls  loop="loop" preload="" muted="">
-                <source src="videos/textureless-midres-8.mp4" type="video/mp4">
-            </video>
-        </div>
-      </div>
-    </div>
-  </section>
-  <br>
-
-
-
-
-  <!-- overview video -->
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center">
-            <h3>Overview video (5 min)</h3>
-            <hr style="margin-top:0px">
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe style="clip-path: inset(1px 1px)" width="100%" height="100%" src="https://www.youtube.com/embed/wuMPaUTJuO0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-            </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <br>
-
-
-  <!-- Pipeline overview -->
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center">
-            <h3>Pipeline overview</h3>
-            <hr style="margin-top:0px">
-            <img class="img-fluid" src="images/neucon-arch.png" alt="NeuralRecon Architechture">
-            <hr style="margin-top:0px">
-            <p class="text-justify">
-              NeuralRecon predicts TSDF with a three-level coarse-to-fine approach that gradually increases the density of sparse voxels.
-              Key-frame images in the local fragment are first passed through the image backbone to extract the multi-level features. 
-              These image features are later back-projected along each ray and aggregated into a 3D feature volume $\mathbf{F}_t^l$, where $l$ represents the level index. 
-              At the first level ($l=1$), a dense TSDF volume $\mathbf{S}_t^{1}$ is predicted.
-              At the second and third levels, the upsampled $\mathbf{S}_t^{l-1}$ from the last level is concatenated with $\mathbf{F}_t^l$ 
-              and used as the input for the GRU Fusion and MLP modules.
-              A feature volume defined in the world frame is maintained at each level as the global hidden state of the GRU.
-              At the last level, the output $\mathbf{S}_t^l$ is used to replace corresponding voxels in the global TSDF volume $\mathbf{S}_t^{g}$, 
-              yielding the final reconstruction at time $t$. 
+              If a user wants to scan a natural object by our system, the object should be put on a horizontal planar surface such as a desk or the ground. 
+              As the user scans the object by a mobile device with a rear RGBD camera, our pipeline tracks 6DoF poses of the object in real-time using a visual-inertial ICP (VI-ICP) approach, 
+              which combines IMU and RGBD information to track the 6DoF poses on the front end, while maintaining a keyframe pool on the back end, with a local BA module and a loop closing module to 
+              refine poses of all the keyframes. The object is consistently segmented in each keyframe by a spatio-temporal planar surface tracking method. Simultaneously, the incoming depths 
+              are fused by the estimated poses to a TSDF model for real-time preview, using an adaptive voxel resizing strategy. When the user finishes scanning, an object model post-processing 
+              module is activated to obtain the final object model. In this post-process, the keyframe poses are optimized in a global BA module, and the object depths of each keyframe are optimized by SGM. 
+              The optimized keyframe depths are fused by the globally optimized poses to a final TSDF model, followed by Marching Cubes, Poisson Surface Reconstruction (PSR), Shape from Shading (SFS) and Multi-view Texture Mapping to get the final 3D mesh.
             </p>
         </div>
       </div>
     </div>
   </section>
   <br>
+
 
   <!-- Comparison with state-of-the-art methods -->
   <section>
@@ -244,67 +150,45 @@
       <div class="row">
         <div class="col-12 text-center">
             <h3>Comparison with state-of-the-art methods</h3>
-            <p class="text-left"> 
-             Only the inference time on key frames is computed. Back-face culling is enabled during rendering. Ground-truth is captured using the LiDAR sensor on iPad Pro.</p>
+            <!--<p class="text-left">
+            We qualitatively and quantitatively compare our Mobile3DScanner to other state-of-the-art methods on the generated 3D models of the static objects captured by iPad Pro 2020.
+            -->
             <hr style="margin-top:0px">
-            <p class="text-left" style="color:#646464"> B5-Scene 1:</p>
-            <video width="100%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="" controls>
-                <source src="videos/Comparison1-near.m4v" type="video/mp4">
-            </video>
-            <p class="text-left" style="color:#646464"> B5-Scene 2:</p>
-            <video width="100%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="" controls>
-              <source src="videos/Comparison2-near.m4v" type="video/mp4">
-          </video>
+
+            <img class="img-fluid" src="images/compare_SOTA.png" alt="Quantitative Comparison" width="90%">
+            <p class="text-justify"> 
+            Comparison of our Mobile3DScanner with other state-of-the-art methods: (a) Three representative keyframes in case “La Marseillaise”. (b) Open3D. (c) KinectFusion. (d) InfiniTAM. (e) BundleFusion.
+              (f) 3D Scanner App. (g) Ours Mobile3DScanner. (h) The GT model aqcuired by a commercial 3D scanner.
+            </p>
+
+            <img class="img-fluid" src="images/model_accuracy.png" alt="Qualitative Comparison" width="90%">
+            <p class="text-justify"> 
+            The RMSEs and MAEs of the reconstruction results by our Mobile3DScanner and other SOTA methods on our four experimental cases captured by iPad Pro 2020, with each object scanned by a commercial 3D scanner as GT.
+            </p>
+
+            <img class="img-fluid" src="images/time_consumption.png" alt="Time Consumption" width="90%">
+            <p class="text-justify">
+            The detailed time consumptions of our Mobile3DScanner in all the substeps of three cases “Deer”, “La Marseillaise” and “Worker” on an iPad Pro 2020, which contain 487 frames, 1098 frames, and 1438 frames respectively.
+            </p>
         </div>
       </div>
     </div>
   </section>
   <br>
 
-    <!-- Comparison with Atlas -->
-    <section>
-      <div class="container">
-        <div class="row">
-          <div class="col-12 text-center">
-              <h3>Comparison with <a href="http://zak.murez.com/atlas">Atlas</a> on a large scene (30m x 10m)</h3>
-              <hr style="margin-top:0px">
-              <video width="100%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="" controls="">
-                <source src="videos/Comparison-atlas.m4v" type="video/mp4">
-            </video>
-          </div>
-        </div>
-      </div>
-    </section>
-    <br>  
-
-  <!-- Comparison with depth-based methods -->
-  <!-- <section>
+  <section>
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">
-            <h3>Comparison with depth-based methods</h3>
             <hr style="margin-top:0px">
-            <img class="img-fluid" src="images/compare-depth-based.png" alt="Comparison with depth-based methods">
+            <img class="img-fluid" src="images/more_result.png" alt="Quantitative Comparison" width="100%">
         </div>
       </div>
     </div>
   </section>
-  <br> -->
+  <br>
 
-  <!-- ack -->
-  <!-- <div class="container">
-    <div class="row ">
-      <div class="col-12">
-          <h3>Acknowledgement</h3>
-          <hr style="margin-top:0px">
-          <p>
-            We would like to specially thank to Reviewer 3 for the positive and constructive comments.
-          </p>
-          <hr>
-      </div>
-    </div>
-  </div> -->
-
+  
   <!-- citing -->
   <div class="container">
     <div class="row ">
@@ -330,14 +214,15 @@
           <h3>Acknowledgements</h3>
           <hr style="margin-top:0px">
           <p class="text-justify">
-            We would like to specially thank Reviewer 3 for the insightful and constructive comments.
-            We would like to thank Sida Peng , Siyu Zhang and Qi Fang for the proof-reading.
+            We would like to thank all Reviewers for their encouraging and constructive comments.
+            We would like to thank Nan Wang, Chongshan Sheng, Li Zhou, Jianjun Xia, Jusong Zhou, and Di Zhang for their kind helps in the development of the Mobile3DScanner system.
           </p>
       </div>
     </div>
   </div>
 
   <!-- rec -->
+  <!-- 
   <div class="container">
     <div class="row ">
       <div class="col-12">
@@ -349,7 +234,7 @@
       </div>
     </div>
   </div>
-
+  -->
 
 
   <footer class="text-center" style="margin-bottom:10px; font-size: medium;">
