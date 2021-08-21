@@ -63,11 +63,12 @@
       <div class="row">
         <div class="col-12 text-center">
           <h3>Abstract</h3>
-            <hr style="margin-top:0px">
-            <h6 style="color:#8899a5"> Mobile3DScanner is capable of scanning a large immovable object such as a “Lion” statue on iPad Pro 2020.</h6>
-            <img class="img-fluid" src="images/teaser.png" alt="Mobile3DScanner Teaser" width="93%">
+            <hr style="margin-top:0px;">
+            <img class="img-fluid" src="images/teaser.png" alt="Mobile3DScanner Teaser" width="100%">
             <br>
-            <hr style="margin-top:0px">
+            <br>
+            <h6 style="color:#8899a5"> Mobile3DScanner is capable of scanning a large immovable object such as a “Lion” statue on iPad Pro 2020.</h6>
+            <br>
             <p class="text-justify">
               We present a novel online 3D scanning system for high-quality object reconstruction with a mobile device, called Mobile3DScanner. Using a mobile device equipped with an embedded RGBD camera, our system provides online 3D object reconstruction capability for users to acquire high-quality textured 3D object models. Starting with a simlutaneous pose tracking and TSDF fusion module, our system allows users to scan an object with a mobile device to get a 3D model for real-time preview. After the real-time scanning process is completed, the scanned 3D model is globally optimized and mapped with multi-view textures as an efficient post- process to get the final textured 3D model on the mobile device. Unlike most existing state-of-the-art systems which can only scan homeware objects such as toys with small dimensions due to the limited computation and memory resources of mobile platforms, our system can reconstruct objects with large dimensions such as statues. We propose a novel visual-inertial ICP approach to achieve real-time accurate 6DoF pose tracking of each incoming frame on the front end, while maintaining a keyframe pool on the back end where the keyframe poses are optimized by local BA. Simultaneously, the keyframe depth maps are fused by the optimized poses to a TSDF model in real-time. Especially, we propose a novel adaptive voxel resizing strategy to solve the out-of-memory problem of large dimension TSDF fusion on mobile platforms. In the post-process, the keyframe poses are globally optimized and the keyframe depth maps are optimized and fused to obtain a final object model with more accurate geometry. The experiments with quantitative and qualitative evaluation demonstrate the effectiveness of the proposed 3D scanning system based on a mobile device, which can successfully achieve online high-quality 3D reconstruction of natural objects with larger dimensions for efficient AR content creation.
             </p>
@@ -101,6 +102,7 @@
   <br>
 
   <!-- showcase -->
+  <br>
   <section>
     <div class="container">
       <div class="row">
