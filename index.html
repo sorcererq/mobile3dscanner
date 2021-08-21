@@ -131,11 +131,10 @@
             <p class="text-justify"> 
               If a user wants to scan a natural object by our system, the object should be put on a horizontal planar surface such as a desk or the ground. 
               As the user scans the object by a mobile device with a rear RGBD camera, our pipeline tracks 6DoF poses of the object in real-time using a visual-inertial ICP (VI-ICP) approach, 
-              which combines IMU and RGBD information to track the 6DoF poses on the front end, while maintaining a keyframe pool on the back end, with a local BA module and a loop closing module to 
-              refine poses of all the keyframes. The object is consistently segmented in each keyframe by a spatio-temporal planar surface tracking method. Simultaneously, the incoming depths 
-              are fused by the estimated poses to a TSDF model for real-time preview, using an adaptive voxel resizing strategy. When the user finishes scanning, an object model post-processing 
-              module is activated to obtain the final object model. In this post-process, the keyframe poses are optimized in a global BA module, and the object depths of each keyframe are optimized by SGM. 
-              The optimized keyframe depths are fused by the globally optimized poses to a final TSDF model, followed by Marching Cubes, Poisson Surface Reconstruction (PSR), Shape from Shading (SFS) and Multi-view Texture Mapping to get the final 3D mesh.
+              combined with local BA and loop closure to refine the poses of keyframes. The object is consistently segmented by a spatio-temporal planar surface tracking method. 
+              Simultaneously, the incoming depths are fused to a TSDF model for real-time preview, using an adaptive voxel resizing strategy. In the post-process, all keyframe 
+              poses and depths are optimized by GBA and SGM, then fused to a TSDF model, followed by Marching Cubes, Poisson Surface Reconstruction (PSR), Shape from Shading (SFS) and 
+              Multi-view Texture Mapping to get the final 3D mesh.
             </p>
         </div>
       </div>
@@ -143,6 +142,79 @@
   </section>
   <br>
 
+  <!-- Real-time scanning -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col text-center">
+            <h3>VI-ICP Tracking</h3>
+            <hr style="margin-top:0px">
+            <img class="img-fluid" src="images/vi-icp.png" width="100%">
+            <p class="text-justify" style="color:#8899a5; font-size:12px"> 
+            ICP tracking results on case "David". (a) Original ICP in <a href="http://www.open3d.org/" target="_blank">Open3D</a>. (b) Our VI-ICP approach. (c) (d) VI-ICP combined with LBA and Loop Closure respectively.
+            </p>
+            <img class="img-fluid" src="images/vi-icp-energy.png" width="40%">
+            <br>
+            <img class="img-fluid" src="images/imu_energy.png" width="40%">
+            <p class="text-justify"> 
+            Our system localizes the camera by loosely coupled integration of ICP and IMU. The IMU state is initialized and optimized with the ICP tracking result and will provide a pose prediction for current frame.
+            The rotation part <img class="img-fluid" src="images/rotation.png" width="5%"> of the predicted pose and gravity <img class="img-fluid" src="images/gravity.png" width="5%"> will be integrated into our ICP energy term to enhance the tracking robustness.
+            </p>
+        </div>
+        <div class="col text-center">
+          <h3>MVS with Depth Prior</h3>
+          <hr style="margin-top:0px">
+          <img class="img-fluid" src="images/sgm.png" width="95%">
+          <p class="text-justify" style="color:#8899a5; font-size:12px"> 
+          Depth refinement on case “David”. (a) A keyframe and its two reference ones. (b) original depth map from iPad Pro. (c) SGM without depth prior. (d) SGM with depth prior.
+          </p>
+          <p class="text-justify">
+          The input depths from consumer RGBD camera such as dToF on iPad Pro might have depth errors or over-smoothness with lost geometric details. 
+          We propose to estimate more accurate depths with geometric details by SGM. The dToF depth measurements are used as depth priors to compute weights for multi-frame cost function as follows:
+          </p>
+          <img class="img-fluid" src="images/sgm_cost.png" width="50%">
+          <br>
+          <p class="text-justify">
+          where <img class="img-fluid" src="images/gaussian.png" width="11%"> is the cost fusion weight using a Gaussian function, <img class="img-fluid" src="images/depth_prior.png" width="7%"> is the 
+          dToF depth prior.
+          </p>
+        </div>
+        
+      </div>
+      <br>
+      <div class="row">
+        <div class="col text-center">
+          <h3>Adaptive Voxel Resizing</h3>
+          <hr style="margin-top:0px">
+          <img class="img-fluid" src="images/voxel_resizing.png" width="100%">
+          <p class="text-justify" style="color:#8899a5; font-size:12px"> 
+          Adaptive voxel resizing on case “Worker”. (a) Origin voxel size: 4mm. (b) After voxel resizing: 6mm. (c) Final 3D mesh: 4mm.
+          </p>
+          <p class="text-justify"> 
+          On a mobile device, the memory usage of TSDF should be kept under an upper limitation (e.g. 200MB) to avoid OOM. The adaptive voxel resizing strategy enable users to scan as large as possible objects with proper voxel resolution, which 
+          will be triggered whenever the memory cost of current TSDF model exceeds the memory limitation. We create a new TSDF volume to represent the object with a larger voxel size (e.g. 1.5 times of origin voxel size) and the new TSDF value is efficiently calculated 
+          by trilinear interpolation of the old voxels. For case "Worker", it costs 65.51 ms on iPad Pro 2020 to complete the voxel resizing.
+          </p>
+        </div>
+        <div class="col text-center">
+            <h3>Efficient SFS</h3>
+            <hr style="margin-top:0px">
+            <img class="img-fluid" src="images/sfs.png" width="93%">
+            <p class="text-justify" style="color:#8899a5; font-size:12px"> 
+            Shape from shading results on case of “David” and "Lion". (a) The 3D models by PSR . (b) The 3D models with SFS.
+            </p>
+            <p class="text-justify">
+            Most existing implementations of SFS are far from feasible to mobile platform due to the limited computation and memory resources. 
+            We perform SFS directly on the mesh, by optimizing an intermediate triangle normal map, followed by updating the vertex positions 
+            according to the optimization of the normal map. It takes only 3.24 seconds on iPad Pro 2020 CPU with RMSE 3.12mm and MAE 2.473mm,  
+            while Intrinsic3D costs 81 minutes on an Intel Core i7 7700K CPU with 32GB RAM to acquire a slightly better result with RMSE 2.89mm and 
+            MAE 2.16mm.
+            </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
 
   <!-- Comparison with state-of-the-art methods -->
   <section>
