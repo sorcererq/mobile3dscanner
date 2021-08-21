@@ -235,7 +235,7 @@
             Most existing implementations of SFS are far from feasible to mobile platform due to the limited computation and memory resources. 
             We perform SFS directly on the mesh, by optimizing an intermediate triangle normal map, followed by updating the vertex positions 
             according to the optimization of the normal map. It takes only 3.24 seconds on iPad Pro 2020 CPU with RMSE 3.12mm and MAE 2.473mm,  
-            while Intrinsic3D costs 81 minutes on an Intel Core i7 7700K CPU with 32GB RAM to acquire a slightly better result with RMSE 2.89mm and 
+            while <a href="https://github.com/NVlabs/intrinsic3d" target="_blank">Intrinsic3D</a> costs 81 minutes on an Intel Core i7 7700K CPU with 32GB RAM to acquire a slightly better result with RMSE 2.89mm and 
             MAE 2.16mm.
             </p>
         </div>
@@ -255,8 +255,14 @@
 
             <img class="img-fluid" src="images/compare_SOTA.png" alt="Quantitative Comparison" width="90%">
             <p class="text-justify"> 
-            Comparison of our Mobile3DScanner with other state-of-the-art methods: (a) Three representative keyframes in case “La Marseillaise”. (b) Open3D. (c) KinectFusion. (d) InfiniTAM. (e) BundleFusion.
-              (f) 3D Scanner App. (g) Ours Mobile3DScanner. (h) The GT model aqcuired by a commercial 3D scanner.
+            Comparison of our Mobile3DScanner with other state-of-the-art methods: (a) Three representative keyframes in case “La Marseillaise”. 
+            (b) <a href="http://www.open3d.org/" target="_blank">Open3D</a>. 
+            (c) <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/ismar2011.pdf" target="_blank">KinectFusion</a>. 
+            (d) <a href="https://www.robots.ox.ac.uk/~victor/infinitam/" target="_blank">InfiniTAM</a>. 
+            (e) <a href="http://graphics.stanford.edu/projects/bundlefusion/" target="_blank">BundleFusion</a>.
+            (f) <a href="https://www.3dscannerapp.com/" target="_blank">3D Scanner App</a>. 
+            (g) Ours Mobile3DScanner. 
+            (h) The GT model aqcuired by a commercial 3D scanner.
             </p>
 
             <img class="img-fluid" src="images/model_accuracy.png" alt="Qualitative Comparison" width="90%">
@@ -299,7 +305,6 @@
   journal={CVPR},
   year={2021}
 }</code></pre>
-          <hr>
       </div>
     </div>
   </div>
