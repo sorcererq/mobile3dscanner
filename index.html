@@ -62,13 +62,19 @@
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">
+            <img class="img-fluid" src="images/teaser.png" alt="Mobile3DScanner Teaser" width="100%">
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  <br>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
           <h3>Abstract</h3>
             <hr style="margin-top:0px;">
-            <img class="img-fluid" src="images/teaser.png" alt="Mobile3DScanner Teaser" width="100%">
-            <br>
-            <br>
-            <h6 style="color:#8899a5"> Mobile3DScanner is capable of scanning a large immovable object such as a “Lion” statue on iPad Pro 2020.</h6>
-            <br>
             <p class="text-justify">
               We present a novel online 3D scanning system for high-quality object reconstruction with a mobile device, called Mobile3DScanner. Using a mobile device equipped with an embedded RGBD camera, our system provides online 3D object reconstruction capability for users to acquire high-quality textured 3D object models. Starting with a simlutaneous pose tracking and TSDF fusion module, our system allows users to scan an object with a mobile device to get a 3D model for real-time preview. After the real-time scanning process is completed, the scanned 3D model is globally optimized and mapped with multi-view textures as an efficient post- process to get the final textured 3D model on the mobile device. Unlike most existing state-of-the-art systems which can only scan homeware objects such as toys with small dimensions due to the limited computation and memory resources of mobile platforms, our system can reconstruct objects with large dimensions such as statues. We propose a novel visual-inertial ICP approach to achieve real-time accurate 6DoF pose tracking of each incoming frame on the front end, while maintaining a keyframe pool on the back end where the keyframe poses are optimized by local BA. Simultaneously, the keyframe depth maps are fused by the optimized poses to a TSDF model in real-time. Especially, we propose a novel adaptive voxel resizing strategy to solve the out-of-memory problem of large dimension TSDF fusion on mobile platforms. In the post-process, the keyframe poses are globally optimized and the keyframe depth maps are optimized and fused to obtain a final object model with more accurate geometry. The experiments with quantitative and qualitative evaluation demonstrate the effectiveness of the proposed 3D scanning system based on a mobile device, which can successfully achieve online high-quality 3D reconstruction of natural objects with larger dimensions for efficient AR content creation.
             </p>
@@ -78,20 +84,28 @@
   </section>
   <br>
 
-  <!-- Real-time scanning -->
+  <!-- Reconstruction Showcase -->
+  <br>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+            <h3>Reconstruction showcase</h3>
+            <hr style="margin-top:0px">
+            <br>
+        </div>
+      </div>
+    </div>
+  </section>
   <section>
     <div class="container">
       <div class="row">
         <div class="col text-center">
-            <h3>Real-time Scanning</h3>
-            <hr style="margin-top:0px">
             <video width="100%" playsinline="" controls autoplay loop="loop" preload="" muted="">
                 <source src="videos/sup-1.mp4" type="video/mp4">
             </video>
         </div>
         <div class="col text-center">
-            <h3>More Results</h3>
-            <hr style="margin-top:0px">
             <video width="100%" playsinline="" controls autoplay loop="loop" preload="" muted="">
                 <source src="videos/sup-2.mp4" type="video/mp4">
             </video>
@@ -102,13 +116,10 @@
   <br>
 
   <!-- showcase -->
-  <br>
   <section>
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">
-            <h3>Reconstruction showcase</h3>
-            <hr style="margin-top:0px">
             <div class="embed-responsive embed-responsive-16by9">
               <iframe width="640" height="480" src="https://sketchfab.com/playlists/embed?collection=b8cdbcb052f349a9bc6fc2a68e4f2001&autostart=1"
               frameborder="0" allow="autoplay; fullscreen; vr" allowvr=""
@@ -122,6 +133,7 @@
   <br>
 
   <!-- system overview -->
+  <br>
   <section>
     <div class="container">
       <div class="row">
@@ -130,6 +142,8 @@
             <hr style="margin-top:0px">
 
             <img class="img-fluid" src="images/system_overview.png" alt="Mobile3DScanner System Overview" width="80%">
+            <br>
+            <br>
             <p class="text-justify"> 
               If a user wants to scan a natural object by our system, the object should be put on a horizontal planar surface such as a desk or the ground. 
               As the user scans the object by a mobile device with a rear RGBD camera, our pipeline tracks 6DoF poses of the object in real-time using a visual-inertial ICP (VI-ICP) approach, 
@@ -144,13 +158,25 @@
   </section>
   <br>
 
-  <!-- Real-time scanning -->
+  <!-- Contributions -->
+  <br>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+            <h3>Contributions</h3>
+            <hr style="margin-top:0px">
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
   <section>
     <div class="container">
       <div class="row">
         <div class="col text-center">
-            <h3>VI-ICP Tracking</h3>
-            <hr style="margin-top:0px">
+            <i><h5><b>VI-ICP Tracking</b></h5></i>
+            <br>
             <img class="img-fluid" src="images/vi-icp.png" width="100%">
             <p class="text-justify" style="color:#8899a5; font-size:12px"> 
             ICP tracking results on case "David". (a) Original ICP in <a href="http://www.open3d.org/" target="_blank">Open3D</a>. (b) Our VI-ICP approach. (c) (d) VI-ICP combined with LBA and Loop Closure respectively.
@@ -164,8 +190,8 @@
             </p>
         </div>
         <div class="col text-center">
-          <h3>MVS with Depth Prior</h3>
-          <hr style="margin-top:0px">
+          <i><h5><b>MVS with Depth Prior</b></h5></i>
+          <br>
           <img class="img-fluid" src="images/sgm.png" width="95%">
           <p class="text-justify" style="color:#8899a5; font-size:12px"> 
           Depth refinement on case “David”. (a) A keyframe and its two reference ones. (b) original depth map from iPad Pro. (c) SGM without depth prior. (d) SGM with depth prior.
@@ -186,8 +212,8 @@
       <br>
       <div class="row">
         <div class="col text-center">
-          <h3>Adaptive Voxel Resizing</h3>
-          <hr style="margin-top:0px">
+          <i><h5><b>Adaptive Voxel Resizing</b></h5></i>
+          <br>
           <img class="img-fluid" src="images/voxel_resizing.png" width="100%">
           <p class="text-justify" style="color:#8899a5; font-size:12px"> 
           Adaptive voxel resizing on case “Worker”. (a) Origin voxel size: 4mm. (b) After voxel resizing: 6mm. (c) Final 3D mesh: 4mm.
@@ -199,8 +225,8 @@
           </p>
         </div>
         <div class="col text-center">
-            <h3>Efficient SFS</h3>
-            <hr style="margin-top:0px">
+            <i><h5><b>Efficient SFS</b></h5></i>
+            <br>
             <img class="img-fluid" src="images/sfs.png" width="93%">
             <p class="text-justify" style="color:#8899a5; font-size:12px"> 
             Shape from shading results on case of “David” and "Lion". (a) The 3D models by PSR . (b) The 3D models with SFS.
@@ -219,14 +245,12 @@
   <br>
 
   <!-- Comparison with state-of-the-art methods -->
+  <br>
   <section>
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">
             <h3>Comparison with state-of-the-art methods</h3>
-            <!--<p class="text-left">
-            We qualitatively and quantitatively compare our Mobile3DScanner to other state-of-the-art methods on the generated 3D models of the static objects captured by iPad Pro 2020.
-            -->
             <hr style="margin-top:0px">
 
             <img class="img-fluid" src="images/compare_SOTA.png" alt="Quantitative Comparison" width="90%">
@@ -248,13 +272,11 @@
       </div>
     </div>
   </section>
-  <br>
 
   <section>
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">
-            <hr style="margin-top:0px">
             <img class="img-fluid" src="images/more_result.png" alt="Quantitative Comparison" width="100%">
         </div>
       </div>
@@ -264,6 +286,7 @@
 
   
   <!-- citing -->
+  <br>
   <div class="container">
     <div class="row ">
       <div class="col-12">
