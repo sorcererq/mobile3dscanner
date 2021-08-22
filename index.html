@@ -171,24 +171,61 @@
     </div>
   </section>
   <br>
+
+  <section>
+    <div class="container">
+      <table width="100%" class="col text-center">
+        <tr>
+          <h5 class="text-left"><b>Visual-Inertial ICP Tracking</b></h5>
+          <br>
+        </tr>
+        <tr>
+          <td width="40%" valign="top">
+            <img class="img-fluid" src="images/vi-icp.png" width="100%">
+            <p class="text-justify" style="color:#8899a5; font-size:13px"> 
+            ICP tracking results on case "David". (a) Original ICP in <a href="http://www.open3d.org/" target="_blank">Open3D</a>. (b) Our VI-ICP approach. (c) (d) VI-ICP combined with LBA and Loop Closure respectively.
+            </p>
+          </td>
+          <td width="5%"></td>
+          <td valign="top">
+            <img class="img-fluid" src="images/vi-icp-energy.png" width="35%">
+              <br>
+              <img class="img-fluid" src="images/imu_energy.png" width="35%">
+              <br><br>
+              <p class="text-justify">
+              Our system localizes the camera by loosely coupled integration of ICP and IMU. The IMU state is initialized and optimized with the ICP tracking result and will provide a pose prediction for current frame.
+              The rotation part <img class="img-fluid" src="images/rotation.png" width="4%"> of the predicted pose and gravity <img class="img-fluid" src="images/gravity.png" width="4%"> will be integrated into our ICP energy term to enhance the tracking robustness.
+              </p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  
   <section>
     <div class="container">
       <div class="row">
         <div class="col text-center">
-            <h5><b>Visual-Inertial ICP Tracking</b></h5>
-            <br>
-            <img class="img-fluid" src="images/vi-icp.png" width="100%">
-            <p class="text-justify" style="color:#8899a5; font-size:12px"> 
-            ICP tracking results on case "David". (a) Original ICP in <a href="http://www.open3d.org/" target="_blank">Open3D</a>. (b) Our VI-ICP approach. (c) (d) VI-ICP combined with LBA and Loop Closure respectively.
-            </p>
-            <img class="img-fluid" src="images/vi-icp-energy.png" width="40%">
-            <br>
-            <img class="img-fluid" src="images/imu_energy.png" width="40%">
-            <p class="text-justify"> 
-            Our system localizes the camera by loosely coupled integration of ICP and IMU. The IMU state is initialized and optimized with the ICP tracking result and will provide a pose prediction for current frame.
-            The rotation part <img class="img-fluid" src="images/rotation.png" width="5%"> of the predicted pose and gravity <img class="img-fluid" src="images/gravity.png" width="5%"> will be integrated into our ICP energy term to enhance the tracking robustness.
-            </p>
-        </div>
+          <h5><b>Visual-Inertial ICP Tracking</b></h5>
+          <img class="img-fluid" src="images/vi-icp.png" width="30%">
+          <p class="text-justify" style="color:#8899a5; font-size:12px"> 
+          ICP tracking results on case "David". (a) Original ICP in <a href="http://www.open3d.org/" target="_blank">Open3D</a>. (b) Our VI-ICP approach. (c) (d) VI-ICP combined with LBA and Loop Closure respectively.
+          </p>
+          <img class="img-fluid" src="images/vi-icp-energy.png" width="30%">
+          <br>
+          <img class="img-fluid" src="images/imu_energy.png" width="30%">
+           
+          Our system localizes the camera by loosely coupled integration of ICP and IMU. The IMU state is initialized and optimized with the ICP tracking result and will provide a pose prediction for current frame.
+          The rotation part <img class="img-fluid" src="images/rotation.png" width="5%"> of the predicted pose and gravity <img class="img-fluid" src="images/gravity.png" width="5%"> will be integrated into our ICP energy term to enhance the tracking robustness.
+          
+       </div>
+      </div>
+    </div>
+  </section>
+  
+  <section>
+    <div class="container">
+      <div class="row">
         <div class="col text-center">
           <h5><b>Multi-View Stereo with Depth Prior</b></h5>
           <br>
